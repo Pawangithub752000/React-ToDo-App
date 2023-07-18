@@ -17,6 +17,13 @@ function App() {
     setItemList((prevItem) => [...prevItem, itemObj]);
     setItem("");
   }
+  function deleteItem(id){
+   console.log(id)
+  const filterItem = itemList.filter((value)=>{
+    return value.id !== id;
+   })
+   setItemList(filterItem)
+  }
 
   return (
     <div className='App'>
@@ -32,7 +39,7 @@ function App() {
           </div>
         </div>
         <div className='lower_half'>
-        <TodoList itemList={itemList}/>
+        <TodoList itemList={itemList} deleteItem={deleteItem}/>
         </div>
       </div>
     </div>

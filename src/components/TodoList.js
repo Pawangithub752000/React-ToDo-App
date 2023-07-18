@@ -3,7 +3,7 @@ import "./TodoList.css"
 import { RiDeleteBin3Line, RiEditBoxLine } from "react-icons/ri";
 
 function TodoList(props) {
-    const { itemList } = props;
+    const { itemList,deleteItem } = props;
     return (
         <>
             {itemList.map((val) => {
@@ -14,7 +14,7 @@ function TodoList(props) {
                         </div>
 
                         <div className='btns'>
-                            <span><RiDeleteBin3Line style={{cursor:"pointer"}}/></span>
+                            <span><RiDeleteBin3Line style={{cursor:"pointer"}} onClick={()=>deleteItem(val.id)}/></span>
                             <span><RiEditBoxLine stylee={{cursor:"pointer"}}/></span>
                         </div>
                     </div>
