@@ -3,23 +3,24 @@ import "./TodoList.css"
 import { RiDeleteBin3Line, RiEditBoxLine } from "react-icons/ri";
 
 function TodoList(props) {
-    const { itemList,deleteItem } = props;
+    const { itemList, deleteItem, editItem } = props;
     return (
         <>
-            {itemList.map((val) => {
-                return (
-                    <div className='item'>
-                        <div className='value'>
-                            <span>{val.itemName}</span>
-                        </div>
+            {itemList?.length !== 0 ?
+                itemList.map((val) => {
+                    return (
+                        <div className='item'>
+                            <div className='value'>
+                                <span>{val.itemName}</span>
+                            </div>
 
-                        <div className='btns'>
-                            <span><RiDeleteBin3Line style={{cursor:"pointer"}} onClick={()=>deleteItem(val.id)}/></span>
-                            <span><RiEditBoxLine stylee={{cursor:"pointer"}}/></span>
+                            <div className='btns'>
+                                <span><RiDeleteBin3Line style={{ cursor: "pointer" }} onClick={() => deleteItem(val.id)} /></span>
+                                <span><RiEditBoxLine style={{ cursor: "pointer" }} onClick={() => editItem(val.id)} /></span>
+                            </div>
                         </div>
-                    </div>
-                )
-            })}
+                    )
+                }) : <div className='noItemAdd'>No Item to Display....</div>}
         </>
     )
 }
